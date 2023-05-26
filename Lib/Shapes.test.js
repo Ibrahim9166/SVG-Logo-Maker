@@ -19,3 +19,13 @@ describe('Triangle', () => {
       expect(circle.render()).toEqual('<circle cx="150" cy="100" r="80" fill="red" />');
     });
   });
+
+  describe('Square', () => {
+    it('should render a square SVG string with the specified color', () => {
+      const square = new Square();
+      square.setColor('green'); // Set the color of the square
+  
+      
+      expect(square.render()).toEqual('<rect x="50" y="50" width="200" height="100" fill="green" />');
+    });
+  });
