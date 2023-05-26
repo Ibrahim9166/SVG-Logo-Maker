@@ -31,3 +31,39 @@ inquirer
       },
     ])
  
+    .then((answers) => {
+        let shape;
+        switch (answers.shape) {
+          case 'circle':
+            shape = new Circle();
+            break;
+          case 'triangle':
+            shape = new Triangle();
+            break;
+          case 'square':
+            shape = new Square();
+            break;
+          default:
+            shape = new Circle();
+        }
+
+        shape.setColor(answers.shapeColor);
+
+        const svgString = `
+          <svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">
+            <text x="50%" y="50%" fill="${answers.textColor}" text-anchor="middle">${answers.text}</text>
+            ${shape.render()}
+          </svg>
+        `;
+    
+        fs.writeFile('logo.svg', svgString, (err) => {
+          if (err) {
+            console.error('Error writing file:', err);
+          } else {
+            console.log('Generated logo.svg');
+          }
+        });
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
