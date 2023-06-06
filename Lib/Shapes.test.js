@@ -1,4 +1,4 @@
-const { Triangle, Circle, Square } = require('Lib/Shapes.js');
+const { Triangle, Circle, Square } = require('./Shapes');
 
 describe('Triangle', () => {
     it('should render a triangle SVG string with the specified color', () => {
